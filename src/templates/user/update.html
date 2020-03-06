@@ -1,0 +1,51 @@
+<!-- src/templates/user/update.html -->
+{%extends 'main/base.html'%}
+
+{%block main%}
+
+<section class="container text-uppercase">
+    {%include 'main/flash_message.html'%}
+    <div class="row">
+        <div class="col-md">
+            <h2>update user information</h2>
+            <hr>
+            <form action="" method="POST">
+                {{form.hidden_tag()}}
+                <div class="form-group">
+                    {{form.email.label(class='form-label')}}
+                    {{form.email(class='form-control')}}
+                </div>
+                <div class="form-group">
+                    {{form.mobile.label(class='form-label')}}
+                    {{form.mobile(class='form-control')}}
+                </div>
+                <div class="form-group">
+                    {{form.baddress.label(class='form-label')}}
+                    {{form.baddress(class='form-control')}}
+                </div>
+                <div class="form-group">
+                    {{form.daddress.label(class='form-label')}}
+                    {{form.daddress(class='form-control')}}
+                </div>
+                <div class="form-group">
+                    {{form.submit(class='btn btn-success px-3 text-uppercase')}}                
+                </div>
+                
+                {% if form.email.errors%}
+                    {%for error in form.email.errors%}
+                        <p style="color: red;">{{error}}</p>
+                    {%endfor%}
+                {% endif %}
+
+                {% if form.mobile.errors%}
+                    {%for error in form.mobile.errors%}
+                        <p>{{error}}</p>
+                    {%endfor%}
+                {% endif %}
+                
+            </form>
+        </div>
+    </div>
+    
+</section>
+{%endblock%}

@@ -1,0 +1,32 @@
+<!-- src/templates/product/add_product_image.html -->
+{%extends 'main/base.html'%}
+
+{%block main%}
+<section class="container">
+    <div class="row">
+        <div class="col">
+            {%include 'main/flash_message.html'%}
+            <h2>add product images</h2>
+            <hr>
+            <form action="" method="POST" enctype="multipart/form-data">
+                {{form.hidden_tag()}}
+                <div class="form-group">
+                    {{form.image.label(class='form-label')}}
+                    {{form.image(class='form-file-control')}}
+                </div>
+                <div class="form-group">
+                    {{form.submit(class='btn btn-success px-3 text-uppercase')}}    
+                </div>
+
+                {% if form.image.errors%}
+                    {%for error in form.image.errors%}
+                        <p style="color: red;">{{error}}</p>
+                    {%endfor%}
+                {% endif %}
+
+            </form>
+        </div>
+    </div>
+    
+</section>
+{%endblock%}

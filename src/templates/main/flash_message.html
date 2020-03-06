@@ -1,0 +1,8 @@
+<!-- src/templates/main/flash_message.html -->
+{%if get_flashed_messages()%}
+    <ul>
+        {%for message in get_flashed_messages()%}
+            <li class="alert alert-success">{{message}}</li>
+        {%endfor%}
+    </ul>
+{%endif%}

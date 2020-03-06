@@ -1,0 +1,32 @@
+<!-- src/templates/user/home.html -->
+{%extends 'main/base.html'%}
+
+{%block main%}
+<section class="container">
+    
+    <div class="row">
+        <div class="col-md p-5 text-center">
+            {%include 'main/flash_message.html'%}
+            <div class="jumbotron bg-dark text-light">
+                <h3>welcome {{current_user.email}}</h3>
+            </div>
+            <hr>
+            {% if current_user.products%}
+                <h4 class="text-info">list of products</h4>
+                <hr>
+                <ul class="list-group text-left">
+                    {%for product in current_user.products%}
+                        <li class="list-group-item"><a href="{{url_for('product.view_product',id=product.id)}}">{{product.name}}</a></li>
+                    {%endfor%}
+                </ul>
+            {%else%}
+                <p>no product added yet</p>
+            {%endif%}
+            <a class="btn btn-success mt-5" href="{{url_for('product.add_product')}}">add product</a>
+        </div>
+    </div>
+    
+    
+    
+</section>
+{%endblock%}

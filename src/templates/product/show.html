@@ -1,0 +1,42 @@
+<!-- src/templates/product/show.html -->
+{%extends 'main/base.html'%}
+
+{%block main%}
+
+<section class="container text-center">
+    <div class="row">
+        <div class="col-md">
+            {%include 'main/flash_message.html'%}
+            <h2 class="text-info">product details</h2>
+            <hr>
+            <ul class="list-group text-left">
+                <li class="list-group-item">name : {{product.name}}</li>
+                <li class="list-group-item">price : {{product.price}}</li>
+                <li class="list-group-item">description : {{product.description}}</li>
+            </ul>
+            <a class="btn btn-primary px-5 m-2" href="{{url_for('product.update_product',id=product.id)}}">edit</a>
+            <a class="btn btn-danger px-5 m-2" href="{{url_for('product.delete_product',id=product.id)}}">delete</a>
+            <div class="container">
+                {%if product.images%}
+                    <hr>
+                    <h4>product images</h4>
+                    <hr>
+                    {%for image in product.images%}
+                        <div style="display: inline-block;">
+                            <img class="img-thumbnail" height="200" width="200" src="{{url_for('static',filename='images/products/')}}{{image.product_image}}" alt=""><br>
+                            <a class="btn btn-danger px-3 m-2" href="{{url_for('product.delete_image',id=image.id)}}">delete</a>
+                        </div>
+                        
+                    {%endfor%}
+                {%else%}
+                    <div class="alert alert-success">no images added yet!</div>
+                {%endif%}
+                <br><br>
+                {% if product.images|length < 5 %}
+                    <a class="btn btn-success m-2 px-3" href="{{url_for('product.add_product_image',id=product.id)}}">upload image</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{%endblock%}

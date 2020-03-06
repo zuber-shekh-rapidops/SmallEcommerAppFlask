@@ -1,0 +1,43 @@
+<!-- src/templates/user/login.html -->
+{%extends 'main/base.html'%}
+
+{%block main%}
+<section class="container">
+    
+    <div class="row">
+        <div class="col-md">
+            {%include 'main/flash_message.html'%}
+            <h2>login</h2>
+            <hr>
+            <form action="" method="POST">
+                {{form.hidden_tag()}}
+                <div class="form-group">
+                    {{form.email.label(class='form-label')}}
+                    {{form.email(class='form-control')}}    
+                </div>
+                <div class="form-group">
+                    {{form.password.label(class='form-label')}}
+                    {{form.password(class='form-control')}}
+                </div>
+                
+                {{form.submit(class='btn btn-info text-uppercase')}}
+
+
+                {% if form.email.errors%}
+                    {%for error in form.email.errors%}
+                        <p style="color: red;">{{error}}</p>
+                    {%endfor%}
+                {% endif %}
+
+                {% if form.password.errors%}
+                    {%for error in form.password.errors%}
+                        <p>{{error}}</p>
+                    {%endfor%}
+                {% endif %}
+
+        </div>
+    </div>
+    
+    </form>
+</section>
+{%endblock%}

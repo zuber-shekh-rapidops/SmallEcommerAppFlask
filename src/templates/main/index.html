@@ -1,0 +1,9 @@
+{% extends 'main/base.html'%}
+
+{%block main%}
+<section class="jumbotron text-center">
+    <h2>Welcome to my ecommerce!</h2>
+    <a class="btn btn-success px-3" href="{{url_for('user.login')}}">click here to login</a>
+    <a class="btn btn-info px-3" href="{{url_for('user.signup')}}">click here to signup</a>
+</section>
+{%endblock%}

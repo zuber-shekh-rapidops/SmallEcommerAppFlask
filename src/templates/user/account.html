@@ -1,0 +1,28 @@
+<!-- src/templates/user/account.html -->
+{%extends 'main/base.html'%}
+
+{%block main%}
+
+<section class="container">
+    <div class="row">
+        <div class="col-md text-center">
+            {%include 'main/flash_message.html'%}            
+            <h3>user details</h3>
+            <hr>
+            <ul class="list-group text-left">
+                <li class="list-group-item">username : {{current_user.email}}</li>
+                <li class="list-group-item">mobile no : {{current_user.mobile_no}}</li>
+                <li class="list-group-item">billing address : {{current_user.billing_address}}</li>
+                <li class="list-group-item">delivery address : {{current_user.delivery_address}}</li>
+                <li class="list-group-item text-center">
+                    <a class="btn btn-info px-3 m-2" href="{{url_for('user.update_user',id=current_user.id)}}">edit</a>
+                    <a class="btn btn-primary px-2 m-2" href="{{url_for('user.update_password',id=current_user.id)}}">update password</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    
+</section>
+{%endblock%}
